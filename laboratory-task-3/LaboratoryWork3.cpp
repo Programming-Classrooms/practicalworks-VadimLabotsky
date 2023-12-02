@@ -1,9 +1,9 @@
 #include <iostream>
 #include <random>
 #include <ctime>
-int64_t length_arrow()
+int length_arrow()
 {
-	int64_t length = 0;
+	int length = 0;
 	while (length <= 0)
 	{
 		std::cout << "Enter lenght array = ";
@@ -15,13 +15,13 @@ int64_t length_arrow()
 
 void swap_(double& leftborder, double& rightborder)
 {
-	int64_t help = rightborder;
+	int help = rightborder;
 	rightborder = leftborder;
 	leftborder = help;
 }
-int64_t enterNumber(double* arr, const int64_t& length)
+int  enterNumber(double* arr, const int& length)
 {
-	for (size_t i = 0; i < length; ++i)
+	for (int i = 0; i < length; ++i)
 	{
 		std::cout << "Ener element = ";
 		std::cin >> arr[i];
@@ -29,7 +29,7 @@ int64_t enterNumber(double* arr, const int64_t& length)
 	std::cout << "Thank you!!!" << '\n';
 	return 0;
 }
-int64_t checkborder(double& leftborder, double& rightborder)
+int checkborder(double& leftborder, double& rightborder)
 {
 
 	while (leftborder == rightborder)
@@ -49,24 +49,24 @@ void randomNum(double* arr, const int& length, double leftborder, double rightbo
 {
 	
 	
-	for (size_t i = 0; i < length; ++i)
+	for (int i = 0; i < length; ++i)
 	{
 		arr[i] = leftborder + rand() * (rightborder - leftborder) / RAND_MAX;
 	}
 }
-void output_array(double* arr, const int64_t& length)
+void output_array(double* arr, const int& length)
 {
 	std::cout << '\n';
-	for (size_t i = 0; i < length; ++i)
+	for (int i = 0; i < length; ++i)
 	{
 		std::cout << arr[i] << "    ";
 	}
 	std::cout << '\n';
 }
 
-void choice(double* arr, const int64_t& length, double& leftborder, double& rightborder)
+void choice(double* arr, const int& length, double& leftborder, double& rightborder)
 {
-	int64_t condition = 0;
+	int condition = 0;
 
 	
 
@@ -91,10 +91,10 @@ void choice(double* arr, const int64_t& length, double& leftborder, double& righ
 }
 
 
-int indez_max_elements(double* arr, const int64_t& length, int64_t& indez_maxelements)
+int indez_max_elements(double* arr, const int& length, int& indez_maxelements)
 {
 	double number_max_ell = abs(arr[0]);
-	for (size_t i = 0; i < length; ++i)
+	for (int i = 0; i < length; ++i)
 	{
 		if (number_max_ell < abs(arr[i]))
 		{
@@ -105,10 +105,10 @@ int indez_max_elements(double* arr, const int64_t& length, int64_t& indez_maxele
 	}
 	return indez_maxelements;
 }
-double summa_elements(double* arr, const int64_t& length)
+double summa_elements(double* arr, const int& length)
 {
 	double sum = 0;
-	for (size_t i = 0; i < length; ++i)
+	for (int i = 0; i < length; ++i)
 	{
 		if (arr[i] < 0 )
 		{
@@ -132,10 +132,10 @@ double intput_p()
 	std::cout << "Thank you!!!" << '\n';
 	return p;
 }
-int lst_num(double* arr, const int64_t& length, int64_t& lst_num_index)
+int lst_num(double* arr, const int& length, int& lst_num_index)
 {
 	lst_num_index = -1;
-	for (size_t i = length - 1; i >= 0; i--)
+	for (int i = length - 1; i >= 0; i--)
 	{
 		if (arr[i] < 0)
 		{
@@ -150,51 +150,51 @@ void del(double*& arr)
 	delete[] arr;
 }
 
-double* help_assignement_1(double*& arr, const int64_t& length, int64_t& lst_num_index, double& p)
+double* help_assignement_1(double*& arr, const int& length, int& lst_num_index, double& p)
 {
 	double* new_arr = new double[length+1];
 
 	int cpy = arr[lst_num_index + 1];
 
-	for (size_t i = 0; i < length; ++i) {
+	for (int i = 0; i < length; ++i) {
 		new_arr[i] = arr[i];
 	}
 
 
 	new_arr[lst_num_index + 1] = p;
-	for (size_t i = lst_num_index + 2; i < length; ++i) {
+	for (int i = lst_num_index + 2; i < length; ++i) {
 		new_arr[i] = arr[i - 1];
 	}
 
-	for (size_t i = 0; i < length; ++i) {
+	for (int i = 0; i < length; ++i) {
 		std::cout << new_arr[i] << "    ";
 	}
 	
 	return new_arr;
 }
 
-void output_array(double* arr, int64_t& length)
+void output_array(double* arr, int& length)
 {
-	for (size_t i = 0; i < length; ++i)
+	for (int i = 0; i < length; ++i)
 	{
 		std::cout << arr[i] << "    ";
 	}
 
 }
 
-void past_after_p(double* arr, int64_t& length, int64_t& lst_num_index, double& p)
+void past_after_p(double* arr, int& length, int& lst_num_index, double& p)
 {
 	double* new_arr = new double[length] {};
 	lst_num_index = lst_num(arr, length, lst_num_index);
 	double h;
-	int64_t l;
+	int l;
 	l = lst_num_index;
 	h = arr[lst_num_index];
 	length++;
 	arr = help_assignement_1(arr, length, lst_num_index, p);
 
 }
-void chek(double* arr, int64_t& length, int64_t& lst_num_index, double& p)
+void chek(double* arr, int& length, int& lst_num_index, double& p)
 {
 		double* new_arr = new double[length] {};
 		lst_num_index = lst_num(arr, length, lst_num_index);
@@ -217,10 +217,10 @@ void chek(double* arr, int64_t& length, int64_t& lst_num_index, double& p)
 int main()
 {
 	srand(time(0));
-	int64_t length = length_arrow();
+	int length = length_arrow();
 	double* arr = new double[length];
 	double leftborder{0}, rightborder{0};
-	int64_t indez_maxelements{0};
+	int indez_maxelements{0};
 	double sum;
 	double p{};
 	choice(arr, length, leftborder, rightborder);
@@ -237,7 +237,7 @@ int main()
 	
 	}
 	
-	int64_t lst_num_index = lst_num(arr, length, lst_num_index);
+	int lst_num_index = lst_num(arr, length, lst_num_index);
 	p = intput_p();
 	chek(arr,  length,  lst_num_index, p);
 	std::cout << '\n';
