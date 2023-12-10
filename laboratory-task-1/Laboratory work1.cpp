@@ -1,24 +1,24 @@
-#define _USE_MATH_DEFINES
+/*Задания к лабораторной работе №1 : Разработать консольное приложение для вычисления приближённого значения функции,
+используя представление ее в виде ряда Тейлора.Вычисления заканчивать, когда очередное слагаемое окажется по модулю меньше
+заданного числа epsilon, где 0 < epsilon <= 10 - k, k – натуральное число, k > 1. Сравнить полученный результат со 
+значением, вычисленным с помощью стандартных функций.Значение x и k ввести по запросу.
+ln(1 + x) = x - x ^ 2 / 2 + x ^ 3 / 3 - x ^ 4 / 4 + …,где x∈(-1; +1]**/
 #include <iostream>
 #include <cmath>
 
-int main()
- {
 
-    double result{}, p{}, s{}, x{};
+int main() 
+{
+    double result = 0, p = 0, s = 0, x = 0;
     const double E = 2.71828182846;
-    int64_t k,n;
-    
-
-    std::cout << "Please, enter x \n ";
+    int32_t k = 0, n = 1;
+    std::cout << "Please, enter x!\n-1 < x <= 1\n";
     std::cin >> x;
-    std::cout << "Please, enter k \n ";
+    std::cout << "Please, enter k!\nk > 1\n";
     std::cin >> k;
-    result = (exp (x) - exp(-x) )/ 2;
     p = x;
-    s = 0;
-    n = 1;
-    if (k > 1)
+    result = (exp (x) - exp(-x)) / 2;
+    if (k > 1 || (x < -1 && x <= 1))
     {
         while (fabs(p) > pow(10, -k))
         {
@@ -30,8 +30,8 @@ int main()
     }
     else
     {
-        std::cout << "Please, enter k > 1";
+        std::cout << "Please, enter k, x!";
     }
-    
     return 0;
 }
+
