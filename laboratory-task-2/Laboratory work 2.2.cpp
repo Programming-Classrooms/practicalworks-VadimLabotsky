@@ -1,49 +1,46 @@
+//Написать программу, которая для заданного натурального числа : 2. удаляет из записи числа все цифры, кратные минимальной цифре;
+
 #include <iostream>
-using std::cout;
-using std::cin;
+
+
 int main()
 {
-	int64_t number, min{ 9 }, last_number{ 0 };
-	int64_t time_number;
-	double x = 0.1;
-	int last_digit;
-	int modified_number = 0;
-	cout << "Input number\n";
-	cin >> number;
-	while (number <= 0)
-	{
-		cout << "ERROR! Please, enter natural number!!! \n ";
-		cin >> number;
-	}
-	time_number = number;
-	while (number)
-	{
-		last_number = number % 10;
-		if (last_number < min)
-		{
-			min = last_number;
-		}
-		number /= 10;
-	}
-	number = time_number;
-	while (number > 0)
-	{
-		int64_t last_digit = number % 10;
-		number /= 10;
-		if (last_digit % min != 0)
-		{
-			x *= 10;
-		}
-		if (last_digit % min != 0)
-		{
-			modified_number = modified_number + (last_digit * x);
-		}
-	}
-	number = time_number;
-	system("cls");
-	cout << number << '\n';
-	cout << "Modified number\n" << modified_number;
-
-
-	return 0;
+  int32_t number, min = 9, lastNumber = 0, timeNumber = 0, modifiedNumber = 0;
+  double x = 0.1;
+  std::cout << "Input number\n";
+  std::cin >> number;
+  while (number <= 0)
+  {
+    std::cout << "ERROR! Please, enter natural number!!! \n ";
+    std::cin >> number;
+  }
+  timeNumber = number;
+  while (number)
+  {
+    lastNumber = number % 10;
+    if (lastNumber < min)
+    {
+      min = lastNumber;
+    }
+    number /= 10;
+  }
+  number = timeNumber;
+  while (number > 0)
+  {
+    int32_t lastDigit = number % 10;
+    number /= 10;
+    if (lastDigit % min != 0)
+    {
+      x *= 10;
+    }
+    if (lastDigit % min != 0)
+    {
+      modifiedNumber = modifiedNumber + (lastDigit * x);
+    }
+  }
+  number = timeNumber;
+  system("cls");
+  std::cout << number << '\n';
+  std::cout << "Modified number\n" << modifiedNumber;
+  return 0;
 }
