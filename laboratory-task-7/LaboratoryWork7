@@ -67,9 +67,11 @@ void searchMaxLengthWord(char* str, char*& word, size_t& maxLengthWord)
 
 void dividesStrAndCheck(char* str, char* delimiters, char* word, bool& indicator, char* timeStr, size_t& maxLengthWord)
 {
-	for (word = strtok(str, delimiters); word != NULL; word = strtok(NULL, delimiters)){
-			strcat(timeStr, delimiters);
-			if (lexgraphOrder(word, indicator)){
+	for (word = strtok(str, delimiters); word != NULL; word = strtok(NULL, delimiters))
+    {
+		strcat(timeStr, delimiters);
+		if (lexgraphOrder(word, indicator))
+        {
 			strcat(timeStr, word);
 			searchMaxLengthWord(str, word, maxLengthWord);
 		}
