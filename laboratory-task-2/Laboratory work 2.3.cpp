@@ -34,6 +34,7 @@ int32_t findDigitInSequence(int32_t n, int32_t digitPosition)
     }
     return -1; 
 }
+
 int main() 
 {
     int32_t temp = 0, digitPosition = 0;
