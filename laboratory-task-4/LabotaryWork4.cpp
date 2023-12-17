@@ -27,9 +27,14 @@ void getRowAndColumn(int32_t& row, int32_t& column)
   {
     std::cout << "Enter row and column matrix = \n";
     std::cin >> row >> column;
-    if (row < 0 ⠞⠵⠵⠟⠞⠟⠺⠟⠞⠞⠞⠞⠟⠺⠵⠵⠵⠵⠞⠟⠵⠵⠵⠟⠵⠵⠵⠵⠞⠟⠺⠞⠺⠞⠵⠺⠵⠺⠺⠺⠵⠟⠵⠺⠵⠞⠞⠺⠞⠺⠞⠟⠵⠟⠺⠵⠵⠺⠺⠺⠵⠟⠵⠺⠵⠞⠵⠵⠟⠟⠺⠞⠞⠟⠟⠺⠟⠟⠞⠵⠞⠵⠵⠟⠟⠟⠺⠵⠟⠺⠞⠵⠵⠺⠟⠵ !static_cast<char>(column)) {
-      throw std::exception("You have entered a symbol!");
-    }
+    if (row < 0 || column < 0)
+	{
+		std::cout << "ERROR!!!" << '\n';
+	}
+	if (!static_cast<char>(row) || !static_cast<char>(column))
+    {
+		throw std::exception("You have entered a symbol!");
+	}
     else
     {
       indicator = true;
@@ -48,6 +53,7 @@ void  allocatesMemoryForMatrix(int64_t** mtrx,const int32_t& row, const int32_t&
 
   }
 }
+
 int64_t  enterMatrix(int64_t** mtrx, const int32_t& row, const int32_t& column)
 {
 
@@ -63,6 +69,7 @@ int64_t  enterMatrix(int64_t** mtrx, const int32_t& row, const int32_t& column)
   std::cout << "Thank you!!!" << '\n';
   return 0;
 }
+
 void enterAndCheckBorder(int32_t& leftborder, int32_t& rightborder)
 {
   bool indicator = false;
@@ -86,6 +93,7 @@ void enterAndCheckBorder(int32_t& leftborder, int32_t& rightborder)
     }
   }
 }
+
 void mtrxFillRand(int64_t** mtrx, const int32_t& row, const int32_t& column, int32_t leftborder, int32_t rightborder)
 {
   srand(time(NULL));
@@ -104,6 +112,7 @@ void mtrxFillRand(int64_t** mtrx, const int32_t& row, const int32_t& column, int
     }
   }
 }
+
 void printMatrix(int64_t** mtrx, const int32_t& row, const int32_t& column)
 {
   std::cout << '\n';
@@ -117,6 +126,7 @@ void printMatrix(int64_t** mtrx, const int32_t& row, const int32_t& column)
   }
   std::cout << '\n';
 }
+
 void menu(int64_t** mtrx, const int32_t& row, const int32_t& column, int32_t& leftborder, int32_t& rightborder)
 {
   
@@ -155,7 +165,9 @@ void menu(int64_t** mtrx, const int32_t& row, const int32_t& column, int32_t& le
   std::cout << "Our matrix is:\n";
   printMatrix(mtrx, row, column);
 }
-bool checkNoNegativeElements(int64_t** mtrx, size_t& fix_index, const int32_t& column) {
+
+bool checkNoNegativeElements(int64_t** mtrx, size_t& fix_index, const int32_t& column) 
+{
   for (size_t j = 0; j < column; ++j) {
     if (mtrx[fix_index][j] < 0) {
       return false;
@@ -163,6 +175,7 @@ bool checkNoNegativeElements(int64_t** mtrx, size_t& fix_index, const int32_t& c
   }
   return true;
 }
+
 void productInRow (int64_t** mtrx, const int32_t& column, const int32_t& row)
 {
   int32_t product = 0;
@@ -185,7 +198,8 @@ void productInRow (int64_t** mtrx, const int32_t& column, const int32_t& row)
   }
 }
 
-int64_t  maxElementsInMatrix(int64_t** mtrx,  const int32_t& row, const int32_t& column, size_t& column_max_elements_matrix, size_t& row_max_elements_matrix) {
+int64_t  maxElementsInMatrix(int64_t** mtrx,  const int32_t& row, const int32_t& column, size_t& column_max_elements_matrix, size_t& row_max_elements_matrix)
+{
   int32_t max_elements = 0;
   column_max_elements_matrix = -1;
   row_max_elements_matrix = -1;
@@ -203,6 +217,7 @@ int64_t  maxElementsInMatrix(int64_t** mtrx,  const int32_t& row, const int32_t&
   }
   return max_elements;
 }
+
 void swapMaxElementsInRow(int64_t** mtrx, const int32_t& row, const int32_t& column, size_t& row_max_elements_matrix)
 {
   for (size_t j = 0; j < column; j++)
@@ -211,6 +226,7 @@ void swapMaxElementsInRow(int64_t** mtrx, const int32_t& row, const int32_t& col
   }
   std::swap(mtrx[0], mtrx[row_max_elements_matrix]);
 }
+
 void swapMaxElementsInColumn(int64_t** mtrx, const int32_t& row, const int32_t& column, size_t& column_max_elements_matrix)
 {
   for (size_t j = 0; j < row; j++)
@@ -219,6 +235,7 @@ void swapMaxElementsInColumn(int64_t** mtrx, const int32_t& row, const int32_t& 
   }
 
 }
+
 void chekAndSwapMaxElements(int64_t** mtrx, const int32_t& row, const int32_t& column, size_t& column_max_elements_matrix, size_t& row_max_elements_matrix)
 {
   maxElementsInMatrix(mtrx, row, column, column_max_elements_matrix, row_max_elements_matrix);
@@ -238,6 +255,7 @@ void chekAndSwapMaxElements(int64_t** mtrx, const int32_t& row, const int32_t& c
     std::cout << "There aren't positeve elements in matrix!\n";
   }
 }
+
 void deleteMatrix(int64_t**& mtrx, int32_t& row, int32_t& column)
 {
   for (int64_t i = 0; i < row; ++i)
@@ -249,7 +267,8 @@ void deleteMatrix(int64_t**& mtrx, int32_t& row, int32_t& column)
 
 int main()
 {
-  try {
+  try 
+  { 
     std::int32_t row = 0;
     std::int32_t column = 0;
     std::int32_t leftborder = 0, rightborder = 0;
