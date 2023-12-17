@@ -84,8 +84,7 @@ void CheckTimeAndWriteResult(char* str, char* timeStr, char* delimiters, char* w
 	const char* space = " ";
 	for (word = strtok(timeStr, delimiters); word != NULL; word = strtok(NULL, delimiters))
 	{
-		
-		if (maxLengthWord == strlen(word) && lexgraphOrder(word, indicator))
+    	if (maxLengthWord == strlen(word) && lexgraphOrder(word, indicator))
 		{
 			strcat(result,word );
 			strcat(result, space);
