@@ -48,7 +48,6 @@ void  allocatesMemoryForMatrix(int64_t** mtrx, const int32_t& row, const int32_t
 
 int64_t  enterMatrix(int64_t** mtrx, const int32_t& row, const int32_t& column)
 {
-
     for (size_t i = 0; i < row; ++i) {
         for (size_t j = 0; j < column; ++j) {
             std::cout << "You enter elements matrix whose number is " << i << " " << j << '\n';
@@ -109,7 +108,6 @@ void printMatrix(int64_t** mtrx, const int32_t& row, const int32_t& column)
 
 void menu(int64_t** mtrx, const int32_t& row, const int32_t& column, int32_t& leftborder, int32_t& rightborder)
 {
-
     std::int32_t condition = 0;
     bool indicator = false;
     while (!indicator) {
