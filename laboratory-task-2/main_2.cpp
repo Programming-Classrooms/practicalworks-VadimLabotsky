@@ -19,27 +19,27 @@ int main()
     double x = 0.1;
     std::cout << "Input number\n";
     std::cin >> number;
-    while (number <= 0){
+    while (number <= 0) {
         std::cout << "ERROR! Please, enter natural number!!! \n ";
         std::cin >> number;
     }
     timeNumber = number;
-    while (number){
+    while (number) {
         lastNumber = number % 10;
-        if (lastNumber < min){
+        if (lastNumber < min) {
             min = lastNumber;
         }
         number /= 10;
    
     }
     number = timeNumber;
-    while (number > 0){
+    while (number > 0) {
         lastDigit = number % 10;
         number /= 10;
-        if (lastDigit % min != 0){
+        if (lastDigit % min != 0) {
             x *= 10;
         }
-        if (lastDigit % min != 0){
+        if (lastDigit % min != 0) {
             modifiedNumber = modifiedNumber + (lastDigit * x);
         }
     }
