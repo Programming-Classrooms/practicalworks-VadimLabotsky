@@ -27,15 +27,15 @@ int main()
 	std::cin >> k;
 	p = x;
 	result = (exp (x) - exp(-x)) / 2;
-	if (k > 1 || (x < -1 && x <= 1)){
-       		while (fabs(p) > pow(10, -k)){
+	if (k > 1 || (x < -1 && x <= 1)) {
+       		while (fabs(p) > pow(10, -k)) {
         	    s += p;
         	    p = (p * x * x) / (2 * n * (2 * n + 1));
         	    ++n;
         	}
        		std::cout << result <<"  =  " << s;
 	}
-	else{
+	else {
         	std::cout << "Please, enter k, x not satisfying the condition!";
     	}
     	return 0;
