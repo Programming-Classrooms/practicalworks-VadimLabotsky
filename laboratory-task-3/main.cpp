@@ -243,7 +243,7 @@ void chekOfNegativElements(double* arr, int32_t& length, size_t& lastNegativInde
 
 int main()
 {
-    try{
+    try {
         srand(time(0));
         int32_t length = 0;
         getLength(length);
