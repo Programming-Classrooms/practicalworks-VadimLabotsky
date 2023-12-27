@@ -1,12 +1,11 @@
 /*
     При написании программ использовать нуль–терминированные строки и работать только с типом char* .Длина каждой   
     строки не превосходит 300 символов.Словом, входящим в состав строки, назовём непрерывную последовательность 
-    символов, ограниченную символами–разделителями,началом и концом строки.Символы, относящиеся к разделителям, 
+    символов, ограниченную символами–разделителями, началом и концом строки.Символы, относящиеся к разделителям, 
     определяет пользователь, если иное не сказано в условии задачи.Если решить задачу невозможно, программа должна 
-    выдать соответствующее сообщение. 
-    5.Строка состоит из слов.За один просмотр символов строки найти все
-    самые длинные слова, символы в которых идут в строгом возрастании кодов, и занести их в новую строку. Слова в   
-    новой строке должны разделяться ровно одним пробелом.
+    выдать соответствующее сообщение. Строка состоит из слов.За один просмотр символов строки найти все самые длинные 
+    слова, символы в которых идут в строгом возрастании кодов, и занести их в новую строку. Слова в новой строке  
+    должны разделяться ровно одним пробелом.
 */
 
 
@@ -15,31 +14,22 @@
 #include <cstring>
 
 
-void inputStringAndDelimeters(char* str, char* delimiters)
+void inputStr(char* str, const char* msg = "", const char* msg1 = "")
 {
-	std::cout << "Please enter delimiters!\n";
-	std::cin.getline(delimiters, 300);
-	while (strlen(delimiters) == 0) {
-		std::cout << "YOU did not enter delimiter(s)!\n";
-		std::cout << "Please enter delimiters!\n";
-		std::cin.getline(delimiters, 300);
-	}
-	std::cout << "Thank you!\n";
-	std::cout << "Please enter a string!\n";
+	std::cout << msg;
 	std::cin.getline(str, 300);
 	while (strlen(str) == 0) {
-		std::cout << "YOU have not entered character(s)!\n";
-		std::cout << "Please enter a string!\n";
-		std::cin.getline(str, 300);
+		std::cout << msg1;
+		std::cout << msg;
+		std::cin >> str;
 	}
-	std::cout << "Thank you!\n";
 }
 
 bool lexgraphOrder(char* word, bool indicator)
 {
 	std::size_t len = strlen(word);
 	for (size_t i = 0; i < len-1; i++) { 
-		if (static_cast<int32_t>(word[i]) <= static_cast<int32_t>(word[i + 1]))	{
+		if (static_cast<int32_t>(word[i]) <= static_cast<int32_t>(word[i + 1])) {
 			indicator = true;
 		}
 		else {
@@ -50,25 +40,20 @@ bool lexgraphOrder(char* word, bool indicator)
 	return indicator;
 }
 
-void searchMaxLengthWord(char* str, char*& word, size_t& maxLengthWord)
-{
-	if (strlen(word) >= maxLengthWord) {
-		maxLengthWord = strlen(word);
-	}
-}
-
 void dividesStrAndCheck(char* str, char* delimiters, char* word, bool& indicator, char* timeStr, size_t& maxLengthWord)
 {
-	for (word = strtok(str, delimiters); word != NULL; word = strtok(NULL, delimiters)){
+	for (word = strtok(str, delimiters); word != NULL; word = strtok(NULL, delimiters)) {
 			strcat(timeStr, delimiters);
-			if (lexgraphOrder(word, indicator)){
-			strcat(timeStr, word);
-			searchMaxLengthWord(str, word, maxLengthWord);
+			if (lexgraphOrder(word, indicator)) {
+			    strcat(timeStr, word);
+			    if (strlen(word) >= maxLengthWord) {
+				    maxLengthWord = strlen(word);
+			    }
 		}
 	}
 }
 
-void CheckTimeAndWriteResult(char* str, char* timeStr, char* delimiters, char* word, bool indicator, char* result, size_t& maxLengthWord)
+void checkTimAndWritResul(char* str, char* timeStr, char* delimiters, char* word, bool indicator, char* result, size_t& maxLengthWord)
 {
 	dividesStrAndCheck(str, delimiters, word, indicator, timeStr, maxLengthWord);
 	const char* space = " ";
@@ -79,8 +64,18 @@ void CheckTimeAndWriteResult(char* str, char* timeStr, char* delimiters, char* w
 			continue;
 		}
 	}
-	std::cout << "Your result!\n";
-	std::cout << result;
+}
+
+void printResult(char* str, char* timeStr, char* delimiters, char* word, bool indicator, char* result, size_t& maxLengthWord)
+{
+	checkTimAndWritResul(str, timeStr, delimiters, word, indicator, result, maxLengthWord);
+	if (strlen(result) != 0) {
+		std::cout << "Your result!\n";
+		std::cout << result;
+	}
+	else {
+		std::cout << "There are no words that satisfy the conditions!\n";
+	}
 }
 
 int main()
@@ -92,8 +87,9 @@ int main()
 	size_t maxLengthWord = 0;
 	char timeStr[300] = "";
 	char result[300] = "";
-	inputStringAndDelimeters(str, delimiters);
-	CheckTimeAndWriteResult(str,timeStr, delimiters, word, indicator, result, maxLengthWord);
+	inputStr(delimiters, "Please enter delimiters!\n", "You enter an empty string!\n");
+	inputStr(str, "Please enter string!\n", "You enter an empty string!\n");
+	printResult(str,timeStr, delimiters, word, indicator, result, maxLengthWord);
 	return 0;
 }
 
