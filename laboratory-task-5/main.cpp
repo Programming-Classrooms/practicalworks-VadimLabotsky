@@ -1,7 +1,7 @@
 /*
     Задание 5. Подпрограммы
 
-    Вычислить значение определенного интеграла с аналитически заданной подынтегральной функцией с заданной точностью    
+    Вычислить значение определенного интеграла с аналитически заданной подынтегральной функцией с заданной точностью
     eps
     А) по формуле левых прямоугольников;
     Б) по формуле правых прямоугольников;
@@ -35,108 +35,122 @@
 
 double func1(double x)
 {
-  return (1 / ((x + 1) * sqrt(x * x + 1)));
+    return (1 / ((x + 1) * sqrt(x * x + 1)));
 }
 
 double func2(double x)
 {
-  return sqrt(pow(2, x) - 1);
+    return sqrt(pow(2, x) - 1);
 }
 
 double func3(double x)
 {
-  return tan(x);
+    return tan(x);
 }
 
-double InegrTrapecia(const double& leftborder, const double& rightborder, double& eps, double (*f)(double))
+double inegrTrapecia(const double& leftborder, const double& rightborder, double& eps, double (*f)(double))
 {
-  double n = 4.0; 
-  double sum = 0.0;
-  double step = (rightborder - leftborder) / n;
-  double otherSum = 0.0;
-  double otherStep1 = 2 * step;
-  double otherStep = step / 2; 
-  sum = f(leftborder) + f(rightborder);
-  for (size_t i = 1; i <= n - 1; ++i) {
-    sum += 2 * f(leftborder + i * step);
-  }
-  sum *= step / 2;
-  otherSum = f(leftborder) + f(rightborder);
-  otherStep = 2 * step;
-  for (size_t i = 1; i <= n - 1; ++i) {
-    otherSum += 2 * f(leftborder + i * otherStep);
-  }
-  otherSum *= otherStep / 2;
-  int32_t index = 0;
-  while (abs(sum - otherSum) < eps) {
-    ++index;
-    sum = otherSum;
-    otherSum = otherSum += 2 * f(leftborder + index * otherStep);
-  }
-  std::cout << "Method of Trapeze Rectangles = ";
-  return sum;
+    double n = 4.0;
+    double sum = 0.0;
+    double step = (rightborder - leftborder) / n;
+    double otherSum = 0.0;
+    double otherStep1 = 2 * step;
+    double otherStep = step / 2;
+
+    sum = f(leftborder) + f(rightborder);
+    for (size_t i = 1; i <= n - 1; ++i) {
+        sum += 2 * f(leftborder + i * step);
+    }
+    sum *= step / 2;
+
+    otherSum = f(leftborder) + f(rightborder);
+    otherStep = 2 * step;
+    for (size_t i = 1; i <= n - 1; ++i) {
+        otherSum += 2 * f(leftborder + i * otherStep);
+    }
+    otherSum *= otherStep / 2;
+
+    int32_t index = 0;
+    while (abs(sum - otherSum) < eps) {
+        ++index;
+        sum = otherSum;
+        otherSum = otherSum += 2 * f(leftborder + index * otherStep);
+    }
+
+    std::cout << "Method of Trapeze Rectangles = ";
+    return sum;
 }
 
-double mediumRectangle(const double& leftborder, const double& rightborder, double& eps, double (*f)(double)) 
+double mediumRectangle(const double& leftborder, const double& rightborder, double& eps, double (*f)(double))
 {
-  double n = 4.0;
-  double sum = 0.0;
-  double step = (rightborder - leftborder) / n;
-  double otherSum = 0.0;
-  double otherStep1 = 2 * step;
-  double otherStep = step / 2;
-  for (size_t i = 0; i < n; ++i) {
-    sum += f(leftborder + step * (i + otherStep));
-  }
-  sum *= step;
-  for (size_t i = 0; i < n; ++i) {
-    otherSum += f(leftborder + step * (i + otherStep));
-  }
-  otherSum *= otherStep1;
-  int32_t index = 0;
-  while (abs(sum - otherSum) < eps) {
-    ++index;
-    sum = otherSum;
-    otherSum += f(leftborder + step * (index + otherStep));
-  }
-  std::cout << "Method of Middle Rectangles =  ";
-  return sum;
+    double n = 4.0;
+    double sum = 0.0;
+    double step = (rightborder - leftborder) / n;
+    double otherSum = 0.0;
+    double otherStep1 = 2 * step;
+    double otherStep = step / 2;
+
+    for (size_t i = 0; i < n; ++i) {
+        sum += f(leftborder + step * (i + otherStep));
+    }
+    sum *= step;
+
+    for (size_t i = 0; i < n; ++i) {
+        otherSum += f(leftborder + step * (i + otherStep));
+    }
+    otherSum *= otherStep1;
+
+    int32_t index = 0;
+    while (abs(sum - otherSum) < eps) {
+        ++index;
+        sum = otherSum;
+        otherSum += f(leftborder + step * (index + otherStep));
+    }
+
+    std::cout << "Method of Middle Rectangles =  ";
+    return sum;
 }
 
-void getAndCheckBorders(double& leftborder, double& rightborder) 
+void getAndCheckBorders(double& leftborder, double& rightborder)
 {
-  std::cout << "Please enter leftborder!\n";
-  std::cin >> leftborder;
-  std::cout << "Please enter rightborder!\n";
-  std::cin >> rightborder;
-  if (leftborder > rightborder) {
-  std::swap(leftborder, rightborder);
-  }
+    std::cout << "Please enter leftborder!\n";
+    std::cin >> leftborder;
+    std::cout << "Please enter rightborder!\n";
+    std::cin >> rightborder;
+
+    if (leftborder > rightborder) {
+        std::swap(leftborder, rightborder);
+    }
 }
 
 double getEps()
 {
-  double eps = -1;
-  while (eps <= 0) {
-    std::cout << "Please enter epsselont. Epsselont must be natural.\n";
-    std::cin >> eps;
-  }
-  return eps;
+    double eps = -1;
+    while (eps <= 0) {
+        std::cout << "Please enter epsselont. Epsselont must be natural.\n";
+        std::cin >> eps;
+    }
+
+    return eps;
 }
 
 int main()
 {
-  double n = 4.0;
-  double leftborder = 0;
-  double rightborder = 0;
-  double (*function[3])(double) = {func1, func2, func3};
-  double eps = getEps();
-  for (size_t i = 0; i < 3; ++i) {
-    getAndCheckBorders(leftborder, rightborder);
-    double Integral1 = mediumRectangle(leftborder, rightborder,  eps, function[i]);
-    std::cout << std::setprecision(10) << Integral1 << '\n';
-    double Integral2 = InegrTrapecia(leftborder, rightborder, eps, function[i]);
-    std::cout << std::setprecision(10) << Integral2 << '\n';
-  }
-  return 0;
+    double n = 4.0;
+    double leftborder = 0;
+    double rightborder = 0;
+    double (*function[3])(double) = { func1, func2, func3 };
+    double eps = getEps();
+
+    for (size_t i = 0; i < 3; ++i) {
+        getAndCheckBorders(leftborder, rightborder);
+        double Integral1 = mediumRectangle(leftborder, rightborder, eps, function[i]);
+        std::cout << std::setprecision(10) << Integral1 << '\n';
+
+        double Integral2 = inegrTrapecia(leftborder, rightborder, eps, function[i]);
+        std::cout << std::setprecision(10) << Integral2 << '\n';
+    }
+
+    return 0;
 }
+
