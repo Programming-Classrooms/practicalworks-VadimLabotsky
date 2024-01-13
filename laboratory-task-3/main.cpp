@@ -21,11 +21,12 @@
 #include<iomanip>
 
 
-void checkLength(int32_t& length) 
+void checkLength(int32_t& length)
 {
     if (length < 0) {
         std::cout << "ERROR!!!" << '\n';
     }
+
     if (!static_cast<char>(length)) {
         throw std::exception("You have entered a symbol!");
     }
@@ -35,6 +36,7 @@ void getLength(int32_t& length)
 {
     length = 0;
     bool indicator = false;
+
     while (!indicator) {
         std::cout << "Enter lenght array = ";
         std::cin >> length;
@@ -46,13 +48,17 @@ void getLength(int32_t& length)
 void  enterElemOfArrayByManual(double* arr, const int32_t& length)
 {
     bool indicator = false;
+
     for (size_t i = 0; i < length; ++i) {
+        
         while (!indicator) {
             std::cout << "Enter element = ";
             std::cin >> arr[i];
+
             if (!static_cast<char>(arr[i])) {
                 throw std::exception("You have entered a symbol!");
             }
+
             else {
                 indicator = true;
                 std::cout << "Thank you!!!" << '\n';
@@ -65,8 +71,9 @@ void  enterElemOfArrayByManual(double* arr, const int32_t& length)
 void checkBorders(double& leftborder, double& rightborder)
 {
     if (!static_cast<char>(leftborder) || !static_cast<char>(rightborder)) {
-         throw std::exception("You have entered a symbol!");
-     }
+        throw std::exception("You have entered a symbol!");
+    }
+
     if (leftborder > rightborder) {
         std::swap(leftborder, rightborder);
     }
@@ -75,9 +82,11 @@ void checkBorders(double& leftborder, double& rightborder)
 void getAndCheckBorder(double& leftborder, double& rightborder)
 {
     bool indicator = false;
+
     while (!indicator) {
         std::cout << "Enter board valuse = ";
         std::cin >> leftborder >> rightborder;
+
         checkBorders(leftborder, rightborder);
         indicator = true;
     }
@@ -91,9 +100,11 @@ void random(double* arr, const int32_t& length, double leftborder, double rightb
 void fillingElemensByRandom(double* arr, const int32_t& length, double leftborder, double rightborder)
 {
     for (size_t i = 0; i < length; ++i) {
+        
         if (leftborder == rightborder) {
             arr[i] = leftborder;
         }
+
         else {
             random(arr, length, leftborder, rightborder, i);
         }
@@ -111,25 +122,32 @@ void menu(double* arr, int32_t& length, double& leftborder, double& rightborder)
 {
     int32_t condition = 0;
     bool indicator = false;
+    
     while (!indicator) {
+       
         std::cout << "Choose enter 1 - enter hands, 2 - random = ";
         std::cin >> condition;
+       
         if (condition != 1 && condition != 2) {
             std::cout << "ERROR!!!" << '\n';
             throw std::exception("Incorrect values!");
             break;
         }
+       
         if (!static_cast<char>(condition)) {
             throw std::exception("You have entered  symbol somewhere\n");
         }
+       
         else {
             indicator = true;
             break;
         }
     }
+    
     if (condition == 1) {
         enterElemOfArrayByManual(arr, length);
     }
+    
     if (condition == 2) {
         getAndCheckBorder(leftborder, rightborder);
         fillingElemensByRandom(arr, length, leftborder, rightborder);
@@ -141,7 +159,9 @@ void menu(double* arr, int32_t& length, double& leftborder, double& rightborder)
 int32_t indexMaxElements(double* arr, const int32_t& length, size_t& indezMaxNumber)
 {
     double number_max_ell = abs(arr[0]);
+
     for (size_t i = 0; i < length; ++i) {
+       
         if (number_max_ell < abs(arr[i])) {
             number_max_ell = abs(arr[i]);
             indezMaxNumber = i;
@@ -153,16 +173,21 @@ int32_t indexMaxElements(double* arr, const int32_t& length, size_t& indezMaxNum
 double summaNegativElementsArray(double* arr, const int32_t& length)
 {
     double sum = 0;
+
     for (size_t i = 0; i < length; ++i) {
+        
         if (arr[i] < 0) {
+            
             if (arr[i] < 0) {
                 sum += arr[i];
             }
         }
+       
         else {
             break;
         }
     }
+
     return sum;
 }
 
@@ -170,12 +195,15 @@ double getUserNumber()
 {
     double userNumber = 0;
     bool indicator = false;
+
     while (!indicator) {
         std::cout << "Please, enter P\n";
         std::cin >> userNumber;
+
         if (!static_cast<char>(userNumber)) {
             throw std::exception("You have entered  symbol somewhere\n");
         }
+
         else {
             indicator = true;
             std::cout << "Thank you!!!" << '\n';
@@ -189,11 +217,14 @@ int64_t lastNegativeElement(double* arr, const int32_t& length, size_t& lastNega
 {
     lastNegativeIndex = -1;
     for (size_t i = length - 1; i >= 0; --i) {
+
         if (arr[i] < 0) {
             lastNegativeIndex = i;
             break;
         }
+
     }
+
     return lastNegativeIndex;
 }
 
@@ -206,16 +237,21 @@ double* helpAssignement1(double* arr, const int32_t& length, size_t& lastNegativ
 {
     double* newArr = new double[length + 1];
     double time = arr[lastNegativeIndex + 1];
+
     for (size_t i = 0; i < length; ++i) {
         newArr[i] = arr[i];
     }
+
     newArr[lastNegativeIndex + 1] = userNumber;
+
     for (size_t i = lastNegativeIndex + 2; i < length; ++i) {
         newArr[i] = arr[i - 1];
     }
+
     for (size_t i = 0; i < length; ++i) {
         std::cout << newArr[i] << std::setw(15);
     }
+
     return newArr;
 }
 
@@ -224,8 +260,8 @@ void insertElememtsAfterP(double* arr, int32_t& length, size_t& lastNegativeInde
     double* new_arr = new double[length] {};
     lastNegativeIndex = lastNegativeElement(arr, length, lastNegativeIndex);
     double LastNegativElements;
-    int32_t indexLastNegativElemnts;
-    indexLastNegativElemnts = lastNegativeIndex;
+    int32_t indexLastNegativElemnts = lastNegativeIndex;
+
     LastNegativElements = arr[lastNegativeIndex];
     length++;
     arr = helpAssignement1(arr, length, lastNegativeIndex, userNumber);
@@ -234,22 +270,26 @@ void insertElememtsAfterP(double* arr, int32_t& length, size_t& lastNegativeInde
 void chekOfNegativElements(double* arr, int32_t& length, size_t& lastNegativeIndex, double& userNumber)
 {
     double* new_arr = new double[length] {};
+
     lastNegativeIndex = lastNegativeElement(arr, length, lastNegativeIndex);
+
     if (lastNegativeIndex < 0)
     {
         std::cout << "\nThere are no negative numbers in the array. P was not inserted.\n";
         return;
     }
+
     if (lastNegativeIndex >= 0)
     {
         insertElememtsAfterP(arr, length, lastNegativeIndex, userNumber);
     }
+
     arrayMemoryClear(arr);
 }
 
 int main()
 {
-    try{
+    try {
         srand(time(0));
         int32_t length = 0;
         getLength(length);
@@ -258,24 +298,32 @@ int main()
         size_t indexMaxNumber = 0;
         double sum = 0;
         double userNumber = 0;
+
         menu(arr, length, leftborder, rightborder);
+
         indexMaxNumber = indexMaxElements(arr, length, indexMaxNumber);
+
         std::cout << "\nMax element in array has number = " << indexMaxNumber + 1;
+
         sum = summaNegativElementsArray(arr, length);
-        if (sum < 0){
+
+        if (sum < 0) {
             std::cout << "\nSum of negative numbers = " << sum << '\n';
         }
-        else{
+
+        else {
             std::cout << "There are no negative elements" << '\n';
 
         }
+
         size_t lastNegativIndex = lastNegativeElement(arr, length, lastNegativIndex);
         userNumber = getUserNumber();
+        
         chekOfNegativElements(arr, length, lastNegativIndex, userNumber);
         std::cout << '\n';
-        return 0;
     }
     catch (const std::exception& ex) {
         std::cout << ex.what();
     }
+    return 0;
 }
