@@ -33,7 +33,7 @@ int32_t findDigitInSequence(int32_t digitPosition) {
     int32_t number =  digitPosition * 3;
 
     while (sequenceLength < digitPosition) {
-        int tempNumber = currentNumber;
+        int32_t tempNumber = currentNumber;
         while (tempNumber > 0) {
             sequenceLength++;
             if (sequenceLength == digitPosition) {
