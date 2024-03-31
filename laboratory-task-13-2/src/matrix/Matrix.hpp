@@ -1,5 +1,5 @@
-#ifndef MATRIX_H
-#define MATRIX_H
+#ifndef MATRIX_HPP
+#define MATRIX_HPP
 
 #include <iostream>
 #include <iomanip>
@@ -63,4 +63,4 @@ public:
     friend std::istream& operator>>(std::istream&, Matrix& mat);
 };
 
-#endif //MATRIX_H
+#endif //MATRIX_HPP
