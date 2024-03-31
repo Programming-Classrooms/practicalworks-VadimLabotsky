@@ -3,6 +3,7 @@
 
 #include<iostream>
 #include <cmath>
+#include <cstdint>
 
 class Fraction
 {
@@ -10,7 +11,7 @@ class Fraction
   int64_t n; // Числитель
   int64_t d; //Знаменатель
 
-  uint64_t greatestCommonDivisor(int64_t,int64_t); // НОД числителя и знаменателя
+  std::uint64_t greatestCommonDivisor(int64_t,int64_t); // НОД числителя и знаменателя
   void reduce();// Сокращение дроби
 
   public:

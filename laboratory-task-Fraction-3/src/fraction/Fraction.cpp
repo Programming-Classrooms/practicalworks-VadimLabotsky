@@ -16,7 +16,7 @@ std::uint64_t Fraction::greatestCommonDivisor(int64_t a, int64_t b)
     if (b % a == 0){
         return a;
     }
-    if (a > b){
+    if (a > b) {
         return greatestCommonDivisor(a % b, b);
     }
     return greatestCommonDivisor(a, b % a);
@@ -26,7 +26,7 @@ std::uint64_t Fraction::greatestCommonDivisor(int64_t a, int64_t b)
 // Сокращение дроби (приватный метод)
 void Fraction::reduce()
 {
-    uint64_t divisor = greatestCommonDivisor(this->n, this->d);
+    std::uint64_t divisor = greatestCommonDivisor(this->n, this->d);
     if (divisor != 1) {
         this->n /= divisor;
         this->d /= divisor;
