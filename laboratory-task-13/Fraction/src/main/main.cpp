@@ -1,5 +1,6 @@
 #include "../fraction/Fraction.hpp"
 
+
 int main()
 {
   try
@@ -69,4 +70,3 @@ int main()
   }
   return 0;
 }
-
