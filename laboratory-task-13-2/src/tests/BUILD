@@ -5,6 +5,6 @@ cc_test(
     srcs = ["MatrixTest.cpp"],
     deps = [
         "@googletest//:gtest_main",
-        "//src/fraction:fraction",
+        "//src/matrix:matrix",
     ]
 )
