@@ -486,3 +486,4 @@ std::istream& operator>>(std::istream& in, Fraction& rhs)
     return in;
 }
 /* =========================================================================== */
+
