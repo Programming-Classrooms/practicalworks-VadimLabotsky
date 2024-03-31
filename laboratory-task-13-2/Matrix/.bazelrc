@@ -1,3 +1,0 @@
-## .bazelrc
-
-common --enable_bzlmod
