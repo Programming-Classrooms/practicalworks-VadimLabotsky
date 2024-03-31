@@ -6,16 +6,19 @@
 /* =========================================================================== */
 
 // НОД числителя и знаменателя (приватный метод)
-uint64_t Fraction::greatestCommonDivisor(int64_t a, int64_t b)
+std::uint64_t Fraction::greatestCommonDivisor(int64_t a, int64_t b)
 {
     a = std::abs(a);
     b = std::abs(b);
-    if (a % b == 0)
+    if (a % b == 0) {
         return b;
-    if (b % a == 0)
+    }
+    if (b % a == 0){
         return a;
-    if (a > b)
+    }
+    if (a > b){
         return greatestCommonDivisor(a % b, b);
+    }
     return greatestCommonDivisor(a, b % a);
 
 }
@@ -42,8 +45,7 @@ Fraction::Fraction(const int64_t& numeratorVal, const int64_t& denominatorVal):
     n(numeratorVal),
     d(denominatorVal)
 {
-    if (denominatorVal == 0)
-    {
+    if (denominatorVal == 0) {
         throw std::invalid_argument("You can't device by zerow!\n");
     }
     reduce();
@@ -108,8 +110,7 @@ void Fraction::setN(const int64_t& n)
 // Установка знаменателя
 void Fraction::setD(const int64_t& d)
 {
-    if (d == 0)
-    {
+    if (d == 0) {
         throw std::invalid_argument("You can't device by zerow!\n");
     }
     this->d = d;
@@ -146,8 +147,7 @@ Fraction& Fraction::operator=(const Fraction& rhs)
 Fraction& Fraction::operator++()
 {
     n += d;
-    if (Fraction::greatestCommonDivisor(n, d) != 1)
-    {
+    if (Fraction::greatestCommonDivisor(n, d) != 1) {
         this->reduce();
     }
     return *this;
@@ -158,8 +158,7 @@ Fraction Fraction::operator++(int)
 {
     Fraction temp(*this);
     n += d;
-    if (Fraction::greatestCommonDivisor(n, d) != 1)
-    {
+    if (Fraction::greatestCommonDivisor(n, d) != 1) {
         temp.reduce();
     }
     return temp;
@@ -168,8 +167,7 @@ Fraction Fraction::operator++(int)
 Fraction& Fraction::operator--()
 {
     n -= d;
-    if (Fraction::greatestCommonDivisor(n, d) != 1)
-    {
+    if (Fraction::greatestCommonDivisor(n, d) != 1) {
         this->reduce();
     }
     return *this;
@@ -180,8 +178,7 @@ Fraction Fraction::operator--(int)
 {
     Fraction temp = *this;
     n -= d;
-    if (Fraction::greatestCommonDivisor(n, d) != 1)
-    {
+    if (Fraction::greatestCommonDivisor(n, d) != 1) {
         temp.reduce();
     }
     return temp;
@@ -190,8 +187,7 @@ Fraction Fraction::operator--(int)
 // Нахождение дроби обратной
 Fraction Fraction::operator!() const
 {
-    if (this->d == 0 && this->n == 0)
-    {
+    if (this->d == 0 && this->n == 0) {
         throw std::invalid_argument("You can't get fraction, because you have numerator by zerow!\n");
     }
     return Fraction(d, n);
@@ -246,8 +242,7 @@ Fraction Fraction::operator*(const Fraction& rhs)
 // Бинарное умножение   [ дробь / дробь ]
 Fraction Fraction::operator/(const Fraction& rhs)
 {
-    if (rhs.n == 0)
-    {
+    if (rhs.n == 0) {
         throw std::invalid_argument("Numerator doesn't be zerow!\n");
     }
     Fraction time(n * rhs.d, d * rhs.n);
@@ -282,8 +277,7 @@ Fraction Fraction::operator*(const int& num)
 // Деление на int [ дробь / литерал ]
 Fraction Fraction::operator/(const int& num) 
 {
-    if (num == 0)
-    {
+    if (num == 0) {
         throw std::invalid_argument("Num doesn't be zerow!\n");
     }
     d *= num ;
@@ -318,8 +312,7 @@ Fraction Fraction::operator*(const int64_t& num)
 // Деление с int64_t  [ дробь - целое число ]
 Fraction Fraction::operator/(const int64_t& num)
 {
-    if (num == 0)
-    {
+    if (num == 0) {
         throw std::invalid_argument("Num doesn't be zerow!\n");
     }
     d *= num;
@@ -347,8 +340,7 @@ Fraction operator*(const int64_t& lhs, const Fraction& rhs)
 // Деление int64_t с дробью  [ целое число / дробь ]
 Fraction operator/(const int64_t& lhs, const Fraction& rhs)
 {
-    if (rhs.d == 0)
-    {
+    if (rhs.d == 0) {
         throw std::invalid_argument("You can't device by nume, because you have denaminator by zerow!!\n");
     }
     
@@ -417,8 +409,7 @@ Fraction& Fraction::operator*=(const Fraction& rhs)
 // Оператор присваивания деления
 Fraction& Fraction::operator/=(const Fraction& rhs)
 {
-    if (rhs.n == 0)
-    {
+    if (rhs.n == 0) {
         throw std::invalid_argument("You can't device by zerow!\n");
     }
     this->n *= rhs.d;
@@ -439,23 +430,19 @@ Fraction& Fraction::operator/=(const Fraction& rhs)
 // Оператор вывода (дружественный)
 std::ostream& operator<<(std::ostream& out, const Fraction& rhs)
 {
-    if (rhs.d == 1 )
-    {
+    if (rhs.d == 1 ) {
         out << rhs.n << '\n';
         return out;
     }
-    if (rhs.n == 0)
-    {
+    if (rhs.n == 0) {
         out << 0;
         return out;
     }
-    if (rhs.n < 0 && rhs.d < 0)
-    {
+    if (rhs.n < 0 && rhs.d < 0) {
         out << -rhs.n << " / " << -rhs.d << '\n';
         return out;
     }
-    if (rhs.d < 0 )
-    {
+    if (rhs.d < 0 ) {
         out << -rhs.n << " / " << -rhs.d << '\n';
         return out;
     }
