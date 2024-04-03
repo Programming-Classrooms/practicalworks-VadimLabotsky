@@ -1,4 +1,4 @@
-#include "../student/StudentAfterSecondSession.hpp"
+#include "../class/StudentAfterSecondSession/StudentAfterSecondSession.hpp"
 #include <stdexcept>
 #include <gtest/gtest.h>
 

@@ -11,6 +11,6 @@ cc_library(
     visibility = ["//visibility:public"],
 
 deps = [
-        "//src/StudentAfterFirstSession:StudentAfterFirstSession",
+        "//src/class/StudentAfterFirstSession:StudentAfterFirstSession",
     ],
 )

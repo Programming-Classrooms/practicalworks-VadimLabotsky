@@ -2,7 +2,7 @@
 
 cc_test(
     name = "tests",
-    srcs = ["StudentTest.cpp"],
+    srcs = ["Test.cpp"],
     deps = [
         "@googletest//:gtest_main",
         "//src/student:student",

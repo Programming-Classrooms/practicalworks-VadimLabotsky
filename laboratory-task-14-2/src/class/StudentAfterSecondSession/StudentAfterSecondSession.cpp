@@ -1,4 +1,4 @@
-#include "StudentAfterSecondSession.hpp"
+#include "src/class/StudentAfterSecondSession/StudentAfterSecondSession.hpp"
 
 /* =========================================================================== */
 /* ============================== Конструкторы =============================== */

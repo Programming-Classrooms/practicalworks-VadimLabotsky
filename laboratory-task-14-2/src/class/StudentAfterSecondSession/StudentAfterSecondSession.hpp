@@ -1,6 +1,6 @@
-#ifndef STUDENTAFTERSECONSSESSEION_HPP
-#define STUDENTAFTERSECONSSESSEION_HPP
-#include "StudentAfterFirstSession.hpp"
+#ifndef STUDENTAFTERSECONDSESSEION_HPP
+#define STUDENTAFTERSECONDSESSEION_HPP
+#include "src/class/StudentAfterFirstSession/StudentAfterFirstSession.hpp"
 
 class StudentAfterSecondSession: public StudentAfterFirstSession
 {
