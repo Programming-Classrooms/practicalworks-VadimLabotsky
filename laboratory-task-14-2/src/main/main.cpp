@@ -1,4 +1,4 @@
-#include "../student/StudentAfterSecondSession.hpp"
+#include "../StudentAfterSecondSession/StudentAfterSecondSession.hpp"
 
 
 int main()

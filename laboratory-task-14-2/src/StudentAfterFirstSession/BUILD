@@ -1,18 +1,17 @@
 ## src/student/BUILD
 
 cc_library(
-    name = "student",
+    name = "StudentAfterFirstSession",
     srcs = [
-"Student.cpp",
 "StudentAfterFirstSession.cpp",
-"StudentAfterSecondSession.cpp",
-
 ],
     hdrs = [
-"Student.hpp",
 "StudentAfterFirstSession.hpp",
-"StudentAfterSecondSession.hpp",
 
 ],
     visibility = ["//visibility:public"],
+
+deps = [
+        "//src/Student:Student"
+    ],
 )
