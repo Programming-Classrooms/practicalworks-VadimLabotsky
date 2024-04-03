@@ -1,10 +1,8 @@
 # Enable Bzlmod for every Bazel command
 common --enable_bzlmod
 
-
 build --action_env=CC=clang
 build --action_env=CXX=clang++
-
 build --cxxopt='-std=c++20'
 test --cxxopt='-std=c++20'
 
@@ -13,7 +11,6 @@ build:debug --compilation_mode=dbg
 
 # release config 
 build:release --compilation_mode=opt
-
 
 build --copt="--language=c++"
 test --copt="--language=c++"
