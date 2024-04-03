@@ -1,4 +1,4 @@
-## src/fraction/BUILD
+## src/student/BUILD
 
 cc_library(
     name = "student",
