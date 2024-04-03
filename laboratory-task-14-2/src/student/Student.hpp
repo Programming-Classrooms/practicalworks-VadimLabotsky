@@ -1,5 +1,5 @@
-#ifndef STUDENT_H
-#define STUDENT_H
+#ifndef STUDENT_HPP
+#define STUDENT_HPP
 
 #include <string>
 #include <iostream>
@@ -37,4 +37,4 @@ public:
     friend std::ostream& operator<<(std::ostream&, const Student&);
 };
 
-#endif // STUDENT_H
+#endif // STUDENT_HPP

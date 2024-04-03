@@ -1,5 +1,5 @@
-#ifndef STUDENTAFTERSECONSSESSEION_H
-#define STUDENTAFTERSECONSSESSEION_H
+#ifndef STUDENTAFTERSECONSSESSEION_HPP
+#define STUDENTAFTERSECONSSESSEION_HPP
 #include "StudentAfterFirstSession.hpp"
 
 class StudentAfterSecondSession: public StudentAfterFirstSession
@@ -24,4 +24,4 @@ public:
 	friend std::ostream& operator<<(std::ostream&, const StudentAfterSecondSession&);
 };
 
-#endif //STUDENTAFTERSECONSSESSEION_H
+#endif //STUDENTAFTERSECONSSESSEION_HPP

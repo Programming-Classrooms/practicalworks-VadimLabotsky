@@ -1,5 +1,5 @@
-#ifndef STUDENTAFTERFIRSTSECCION_H
-#define STUDENTAFTERFIRSTSECCION_H
+#ifndef STUDENTAFTERFIRSTSECCION_HPP
+#define STUDENTAFTERFIRSTSECCION_HPP
 #include "Student.hpp"
 
 class StudentAfterFirstSession: public Student
@@ -24,4 +24,4 @@ public:
 	//Дружественный оператор вывода
 	friend std::ostream& operator<<(std::ostream&, const StudentAfterFirstSession&);
 };
-#endif//STUDENTAFTERFIRSTSECCION_H
+#endif//STUDENTAFTERFIRSTSECCION_HPP
