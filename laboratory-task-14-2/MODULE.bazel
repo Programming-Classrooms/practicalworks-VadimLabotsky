@@ -1,0 +1,20 @@
+## MODULE.bazel
+
+module(
+    name = "cpp_app",
+    repo_name = "cpp_app",
+    version = "1.0",
+    compatibility_level = 1
+)
+## MODULE.bazel
+
+bazel_dep(name = "googletest", version = "1.14.0")
+
+## MODULE.bazel
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+http_archive(
+    name = "foo",
+    urls = ["https://example.com/foo.zip"],
+    sha256 = "c9526390a7cd420fdcec2988b4f3626fe9c5b51e2959f685e8f4d170d1a9bd96"
+)
