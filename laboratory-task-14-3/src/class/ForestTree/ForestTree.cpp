@@ -4,13 +4,14 @@
 /* ============================== Конструкторы =============================== */
 /* =========================================================================== */
 
-// Конструктор по умолчанию
-ForestTree::ForestTree():Tree(), amountOfWood(0.0)
+// Конструктор с параметром
+ForestTree::ForestTree(std::string timeName, size_t timeAge, Tipe timeTipe, double timeAmount): Tree(timeName, timeAge, timeTipe), amountOfWood(timeAmount)
 {}
 
-// Конструктор с параметром
-ForestTree::ForestTree(std::string timeName, size_t timeAge,  double timeAmount): Tree(timeName, timeAge, Tipe::Deciduous), amountOfWood(timeAmount)
-{}
+ForestTree::ForestTree(const ForestTree& rhs, double timeAmount):Tree(rhs), amountOfWood(timeAmount)
+{
+
+}
 
 // Конструктор копирования
 ForestTree::ForestTree(const ForestTree& rhs):Tree(rhs), amountOfWood(rhs.amountOfWood)
@@ -48,29 +49,12 @@ void ForestTree::setAmountOfWood(double timeAmountOfWood)
 /* ======================================================================== */
 
 
-
-/* =========================================================================== */
-/* =================== Перегрузка дефолтного оператора присваивания ==================== */
-/* =========================================================================== */
-ForestTree& ForestTree::operator=(const ForestTree& rhs)
-{
-	Tree::operator=(rhs);
-	if (this != &rhs)
-	{
-		this->amountOfWood = rhs.amountOfWood;
-	}
-	return *this;
-}
-/* ======================================================================== */
-
-
-
 /* =============================================== */
 /* =================== Методы ==================== */
 /* =============================================== */
 void ForestTree::print() const
 {
-	std::cout << name << '\t' << age << '\t' << "Deciduous" << '\t' << amountOfWood << '\n';
+	std::cout  << "Forest tree" << '\t'<< name << '\t' << age << '\t' << "Deciduous" << '\t' << amountOfWood << '\n';
 }
 
 /* ======================================================================== */

@@ -4,17 +4,35 @@
 /* ============================== Конструкторы =============================== */
 /* =========================================================================== */
 
-// Конструктор по умолчанию
-Tree::Tree():name("No name"), age(0), tipe(Tipe::Coniferous)
-{}
+
 
 // Конструктор с параметром
 Tree::Tree(std::string timeName, size_t timeAge, Tipe timeTipe): name(timeName), age(timeAge), tipe(timeTipe)
-{}
+{
+	if (timeName.length() == 0)
+	{
+		throw std::runtime_error("Tree name is empty\n");
+	}
+	if (timeAge < 0 )
+	{
+		throw std::runtime_error("Age cann't be less than 0!\n");
+	}
+	
+	
+}
 
 // Конструктор копирования
 Tree::Tree(const Tree& rhs): name(rhs.name), age(rhs.age), tipe(rhs.tipe)
-{}
+{
+	if (rhs.name.length() == 0)
+	{
+		throw std::runtime_error("Tree name is empty\n");
+	}
+	if (rhs.age < 0 )
+	{
+		throw std::runtime_error("Age cann't be less than 0!\n");
+	}
+}
 
 //Деструктор
 Tree::~Tree()
@@ -37,6 +55,11 @@ std::string Tree::getName() const
 size_t Tree::getAge() const
 {
 	return age;
+}
+// Получение типа
+Tipe Tree::getTypeTree() const
+{
+	return tipe;
 }
 /* =========================================================================== */
 
@@ -61,25 +84,13 @@ void Tree::setAge(size_t timeAge)
 	}
 	age = timeAge;
 }
-/* ======================================================================== */
 
-
-
-/* =========================================================================== */
-/* =================== Перегрузка дефолтного оператора присваивания ==================== */
-/* =========================================================================== */
-Tree& Tree::operator=(const Tree& rhs)
+// Установка типа
+void Tree::setType(Tipe timeType) 
 {
-	if (this != &rhs)
-	{
-		this->name = rhs.name;
-		this->age = rhs.age;
-		this->tipe = rhs.tipe;
-	}
-	return *this;
+	tipe = timeType;
 }
 /* ======================================================================== */
-
 
 
 /* =============================================== */

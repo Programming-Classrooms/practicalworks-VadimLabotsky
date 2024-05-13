@@ -17,26 +17,25 @@ protected:
 	Tipe tipe;// Тип
 public:
 	//Конструкторы
-	Tree();
+	Tree() = default;
 	Tree(std::string, size_t, Tipe);
 	Tree(const Tree&);
 
 	//Деструкторы
-	~Tree();
+	virtual ~Tree();
 
 	//Геттеры
 	std::string getName() const;
 	size_t getAge() const;
+	Tipe getTypeTree() const;
 
 	//Сеттеры
 	void setName(std::string);
 	void setAge(size_t);
-
-	// Дефолтный оператор присваивания
-	Tree& operator=(const Tree&);
+	void setType(Tipe);
 
 	//Виртуальный метод вывода информации
-	virtual void print() const;
+	virtual void print() const = 0;
 
 };
 #endif // TREE_H

@@ -7,4 +7,7 @@ cc_binary(
         "//src/class/FruitTree:FruitTree",
         "//src/class/ArrayTree:ArrayTree",
     ],
+        data = [
+        "//src/Files:Files",
+    ],
 )

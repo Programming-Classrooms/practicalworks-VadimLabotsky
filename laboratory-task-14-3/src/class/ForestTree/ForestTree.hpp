@@ -7,8 +7,8 @@ private:
 	double amountOfWood;// Количество древесины
 public:
 	//Конструкторы
-	ForestTree();
-	ForestTree(std::string, size_t, double);
+	ForestTree(std::string, size_t, Tipe, double);
+	ForestTree(const ForestTree&, double);
 	ForestTree(const ForestTree&);
 
 	//Деструктор
@@ -20,10 +20,10 @@ public:
 	//Сеттеры
 	void setAmountOfWood(double);
 
-	// Дефолтный оператор присваивания
-	ForestTree& operator=(const ForestTree&);
 
 	//Виртуальный метод вывода информации
 	void print() const override;
+
+	friend std::istream& operator>>(std::istream&, ForestTree&);
 };
 #endif // FORESTTREE_HPP

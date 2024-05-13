@@ -5,25 +5,23 @@
 #include "src/class/FruitTree/FruitTree.hpp"
 #include <vector>
 #include <algorithm>
-class ArrayTree
+class ArrayTree final: public Tree
 {
 private:
 	std::vector<Tree*> forest;
-	static bool ruleForSortName(Tree*, Tree*);
-	static bool ruleForSortByAge(Tree*, Tree*);
 public:
-	//Конструкторы
-	ArrayTree();
-	ArrayTree(const ArrayTree&);
-
 	//Деструкторы
 	~ArrayTree() = default;
 
 	//Методы
 	void addTree(Tree*);
+	size_t countTreeType(Tipe);
 	void sortArrayByName();
 	void sortArrayByAge();
-	void print();
+	void print() const override;
+
+	//Дружественный оператор ввода
+	friend std::istream& operator>>(std::istream& in, ArrayTree& rhs);
 };
 
 #endif // ARRAYTREE_H

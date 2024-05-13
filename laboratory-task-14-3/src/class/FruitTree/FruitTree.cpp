@@ -4,16 +4,17 @@
 /* ============================== Конструкторы =============================== */
 /* =========================================================================== */
 
-// Конструктор по умолчанию
-FruitTree::FruitTree() :Tree("No name", 0, Tipe::Coniferous), cropWeight(0.0), averageStorageTime(0)
-{}
+
 
 // Конструктор с параметром
-FruitTree::FruitTree(std::string timeName, size_t timeAge, double timeCropWeight, size_t timeAverageStorageTime):
-	Tree(timeName, timeAge, Tipe::Coniferous), cropWeight(timeCropWeight), averageStorageTime(timeAverageStorageTime)
+FruitTree::FruitTree(std::string timeName, size_t timeAge,Tipe timeTipe, double timeCropWeight, size_t timeAverageStorageTime):
+	Tree(timeName, timeAge, timeTipe), cropWeight(timeCropWeight), averageStorageTime(timeAverageStorageTime)
 {
 }
-
+// Конструктор копирования
+FruitTree::FruitTree(const FruitTree& rhs, double timeCropWeight, size_t timeAverageStorageTime): Tree(rhs), cropWeight(timeCropWeight), averageStorageTime(timeAverageStorageTime)
+{
+}
 // Конструктор копирования
 FruitTree::FruitTree(const FruitTree& rhs): Tree(rhs), cropWeight(rhs.cropWeight), averageStorageTime(rhs.averageStorageTime)
 {
@@ -65,28 +66,11 @@ void FruitTree::setAverageStorageTime(size_t timeAverageStorageTime)
 
 
 
-/* =========================================================================== */
-/* =================== Перегрузка дефолтного оператора присваивания ==================== */
-/* =========================================================================== */
-FruitTree& FruitTree::operator=(const FruitTree& rhs)
-{
-	Tree::operator=(rhs);
-	if (this != &rhs)
-	{
-		this->cropWeight = rhs.cropWeight;
-		this->averageStorageTime = rhs.averageStorageTime;
-	}
-	return *this;
-}
-/* ======================================================================== */
-
-
-
 /* =============================================== */
 /* =================== Методы ==================== */
 /* =============================================== */
 void FruitTree::print() const
 {
-	std::cout << name << '\t' << age << '\t' << "Coniferous" << '\t' << cropWeight << '\t' << averageStorageTime << '\n';
+	std::cout << "Fruit tree" << '\t'<< name << '\t' << age << '\t' << "Coniferous" << '\t' << cropWeight << '\t' << averageStorageTime << '\n';
 }
 /* ======================================================================== */

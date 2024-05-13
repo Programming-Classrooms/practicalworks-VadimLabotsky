@@ -2,21 +2,45 @@
 #include "src/class/ForestTree/ForestTree.hpp"
 #include "src/class/FruitTree/FruitTree.hpp"
 #include "src/class/ArrayTree/ArrayTree.hpp"
+#include <fstream>
+
+
+void checkFile(std::ifstream& fin)
+{
+	if (!fin.good())
+	{
+		throw std::ios_base::failure("File does not exist.\n");
+	}
+	if (!fin)
+	{
+		throw std::ios_base::failure("File is not opened.\n");
+	}
+	if (fin.peek() == EOF)
+	{
+		throw std::ios_base::failure("File is empty.\n");
+	}
+}
 int main()
 {
-	ForestTree* tree1 = new ForestTree;
-	ForestTree* tree2 = new ForestTree("dub", 147, 7.8);
-	tree1->print();
-	tree2->print();
-	FruitTree* tree3 = new FruitTree;
-	FruitTree* tree4 = new FruitTree("Dub", 1, 7.8, 78);
-	tree3->print();
-	tree4->print();
-	ArrayTree forest;
-	forest.addTree(tree2);
-	forest.addTree(tree1);
-	forest.addTree(tree3);
-	forest.addTree(tree4);
-	forest.print();
+	try
+	{
+
+		ArrayTree trees;
+		std::ifstream fin("src/Files/trees.txt");
+		checkFile(fin);
+		fin >> trees;
+		trees.print();
+		std::cout << trees.countTreeType(Tipe::Coniferous);
+		trees.sortArrayByAge();
+		trees.print();
+		trees.sortArrayByName();
+		trees.print();
+	}
+	catch (const std::ios_base::failure& e) {
+		std::cerr << e.what() << '\n';
+	}
+	catch(const std::runtime_error& e) {
+		std::cerr << e.what() << '\n';
+	}
 	return 0;
 }
