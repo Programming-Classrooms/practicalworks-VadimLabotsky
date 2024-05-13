@@ -6,5 +6,5 @@ cc_test(
     deps = [
         "@googletest//:gtest_main",
         
-    ]
+    ],
 )
