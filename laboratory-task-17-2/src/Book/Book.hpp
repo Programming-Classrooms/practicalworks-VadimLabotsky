@@ -15,11 +15,11 @@ public:
 	int getYearOfPublication() const;
 	size_t getNumberUDK() const;
 	std::set<Author> getAuthors() const;
-
+	void addAuthor(Author);
+	void eraseAuthor(Author);
 	friend std::istream& operator>>(std::istream&, Book&);
 	friend std::ostream& operator<<(std::ostream&, Book);
 };
 
 
 #endif // !BOOK_HPP
-

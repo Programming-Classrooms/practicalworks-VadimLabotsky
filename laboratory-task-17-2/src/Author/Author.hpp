@@ -18,6 +18,7 @@ public:
 	std::string getSurname() const;
 	std::string getName() const;
 	std::string getPatronymic() const;
+	
 	bool  operator<(const Author&) const;
 	friend std::istream& operator>>(std::istream&, Author&);
 	friend std::ostream& operator<<(std::ostream&, Author);
@@ -25,4 +26,3 @@ public:
 };
 
 #endif // !AUTHOR_HPP
-

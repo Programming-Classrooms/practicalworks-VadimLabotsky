@@ -28,18 +28,29 @@ std::set<Author> Book::getAuthors() const
 	return authors;
 }
 
+void Book::addAuthor(Author author)
+{
+	authors.insert(author);
+}
+
+void Book::eraseAuthor(Author author)
+{
+	authors.erase(author);
+}
+
 std::istream& operator>>(std::istream& fin, Book& rhs)
 {
 	size_t size;
 	Author author;
-	fin >> rhs.numberUDK >> size;
-
-	for (size_t i = 0; i < size; i++)
+	fin >> rhs.numberUDK >> rhs.yearOfPublication;
+	fin >> size;
+	while (size != 0)
 	{
 		fin >> author;
 		rhs.authors.insert(author);
+		--size;
 	}
-	fin >> rhs.yearOfPublication;
+
 	return fin;
 
 }
@@ -55,4 +66,3 @@ std::ostream& operator<<(std::ostream& fout, Book rhs)
 	fout << rhs.yearOfPublication <<"\n\n";
 	return fout;
 }
-

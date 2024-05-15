@@ -1,21 +1,16 @@
 #include "Author.hpp"
 
 Author::Author(): surname(""), name(""), patronymic("")
-{
-}
+{}
 
 Author::Author(std::string timeSurname, std::string timeName, std::string timePatronymic): surname(timeSurname), name(timeName), patronymic(timePatronymic)
-{
-}
+{}
 
-Author::Author(const Author& rhs):name(rhs.name), surname(rhs.surname), patronymic(rhs.patronymic)
-{
-}
+Author::Author(const Author& rhs):surname(rhs.surname),name(rhs.name),  patronymic(rhs.patronymic)
+{}
 
 Author::~Author()
-{
-	
-}
+{}
 
 std::string Author::getSurname() const
 {
@@ -48,4 +43,3 @@ std::ostream& operator<<(std::ostream& fout, Author rhs)
 	fout << rhs.surname << '\t' << rhs.name << '\t' << rhs.patronymic << '\t';
 	return fout;
 }
-
