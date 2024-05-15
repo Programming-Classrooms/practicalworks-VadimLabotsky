@@ -5,7 +5,7 @@ cc_test(
     srcs = ["Test.cpp"],
     deps = [
         "@googletest//:gtest_main",
-        "//src/class/Student:Student",
+        "//src/Student:Student",
        
     ]
 )
