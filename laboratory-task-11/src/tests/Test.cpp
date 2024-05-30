@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 
 #include"../class/All/All.hpp"
-#include"./class/AllNumbers/AllNumbers.hpp"
+#include"../class/AllNumbers/AllNumbers.hpp"
 #include"../class/AllSurnames/AllSurnames.hpp"
 #include"../class/Employee/Employee.hpp"
 
