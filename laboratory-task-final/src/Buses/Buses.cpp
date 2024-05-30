@@ -1,8 +1,5 @@
 #include "Buses.hpp"
 
-Buses::Buses()
-{}
-
 Buses::Buses(std::queue <Bus> timeBuses): buses(timeBuses)
 {}
 
@@ -26,17 +23,60 @@ void Buses::copy(std::vector <Bus>& time)
         times.pop();
    }
 }
-void Buses::copy()
+void Buses::copyMap()
 {
     std::queue <Bus> times(buses);
    while (!times.empty())
    {
-        mapBuses.emplace(times.front().getNumberBus(), times.front());
+        mapBuses.emplace(times.front().getNumberBusRouter(), times.front());
         times.pop();
    }
 }
 
-
+void Buses::find(size_t time)
+{
+    bool flag = false;
+    for (size_t i = 0; i < mapBuses.size(); i++)
+    {
+        if (mapBuses[i].getNumberBusRouter() == time)
+        {
+            std::cout << mapBuses[i];
+            flag = true;
+        }
+        
+    }
+    if (!flag)
+    {
+        std::cout << "Нет таких автобусов!\n";
+    }
+    
+}
+void Buses::print(std::string mark)
+{
+    bool flag = false;
+    for (size_t i = 0; i < mapBuses.size(); i++)
+    {
+        if (mapBuses[i].getMarkOfBus() == mark)
+        {
+            std::cout << mapBuses[i].getDriver() <<'\n';
+            flag = true;
+        }
+        
+    }
+    if (!flag)
+    {
+        std::cout << "Нет таких автобусов!\n";
+    }
+}
+ void Buses::erase(size_t time)
+ {
+    mapBuses.erase(time);
+  
+     for (size_t i = 0; i < mapBuses.size(); i++)
+    {
+        std::cout << mapBuses[i];
+    }
+ }
 void Buses::sortNumberBus()
 {
     std::vector <Bus> busesVector;

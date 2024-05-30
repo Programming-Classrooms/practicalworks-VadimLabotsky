@@ -11,14 +11,15 @@ private:
     std::queue <Bus> buses;
     void copy(std::vector<Bus>&);
     std::map<size_t,Bus> mapBuses;
-    void copy();
 public:
-    Buses();
+    void copyMap();
+    Buses() = default;
     Buses(std::queue <Bus>);
     Buses(const Buses&);
     ~Buses();
-
- 
+    void find(size_t);
+    void print(std::string);
+    void erase(size_t);
     void sortNumberBus();
     void sortNumberBusRouter();
     friend std::istream& operator>>(std::istream&, Buses&);
