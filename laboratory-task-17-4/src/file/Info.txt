@@ -1,0 +1,7 @@
+Fishman first:       carp     smelt         
+Fishman second:      perch      pike         
+Fishman third:       carp      chub     smelt         
+
+Types of fish caught by at least one fisherman:       carp      chub     perch      pike     smelt         
+
+Fish that are in the lake, but not in the catch of any of the fishermen:      bream   catfish       eelpike-perch         
